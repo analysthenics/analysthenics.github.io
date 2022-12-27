@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<!-- _layouts/distill.html --><html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>King of Weighted Calisthenics: A statistical analysis | Analysthenics</title>
+    <meta name="author" content="Analy&lt;b&gt;sthenics&lt;/b&gt;  ">
+    <meta name="description" content="Some visualization and statistical analysis of the King of Calisthenics competition">
+    <meta name="keywords" content="calisthenics, gymnastics, climbing, bouldering">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CRoboto+Slab:100,300,400,500,700%7CMaterial+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/mountain-city-solid.svg">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/blog/2022/king-weighted-calisthenics/">
+    
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <!-- Distill js -->
+    <script src="/assets/js/distillpub/template.v2.js"></script>
+    <script src="/assets/js/distillpub/transforms.v2.js"></script>
+    <script src="/assets/js/distillpub/overrides.js"></script>
+    
+  </head>
+
+  <body>
+<d-front-matter>
+    <script async type="text/json">{
+      "title": "King of Weighted Calisthenics: A statistical analysis",
+      "description": "Some visualization and statistical analysis of the King of Calisthenics competition",
+      "published": "December 25, 2022",
+      "authors": [
+        {
+          "author": "Fabien Pesquerel",
+          "authorURL": "https://https://fabienpesquerel.github.io/",
+          "affiliations": [
+            {
+              "name": "SCOOL research team, INRIA",
+              "url": ""
+            }
+          ]
+        }
+        
+      ],
+      "katex": {
+        "delimiters": [
+          {
+            "left": "$",
+            "right": "$",
+            "display": false
+          },
+          {
+            "left": "$$",
+            "right": "$$",
+            "display": true
+          }
+        ]
+      }
+    }</script>
+  </d-front-matter>
+
+  
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/">Analy<b>sthenics</b></a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/projects/">projects</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/calisthenics/">my calisthenics journey</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="post distill">
+
+      <d-title>
+        <h1>King of Weighted Calisthenics: A statistical analysis</h1>
+        <p>Some visualization and statistical analysis of the King of Calisthenics competition</p>
+      </d-title>
+
+      <d-byline></d-byline>
+
+      <d-article>
+        <d-contents>
+          <nav class="l-text figcaption">
+          <h3>Contents</h3>
+            <div><a href="#weighted-calisthenics">Weighted calisthenics</a></div>
+            <div><a href="#the-data">The data</a></div>
+            <div><a href="#athletes-profiles">Athletes profiles</a></div>
+            <div><a href="#athletes-performances">Athletes performances</a></div>
+            <div><a href="#absolute-strength">Absolute strength</a></div>
+            <div><a href="#relative-strength">Relative strength</a></div>
+            <div><a href="#what-about-me">What about me?</a></div>
+            
+          </nav>
+        </d-contents>
+
+        <p><strong>In this post, we make a first step toward organizing, analyzing and interpreting calisthenics related data. We also show how to use these data to set calisthenics goals.</strong></p>
+
+<p>We hope this analysis will help the interested practitioner in their calisthenics journey, as it will <strong>set baselines</strong> that he or she can compare against.</p>
+
+<p>While we intend to help calisthenics practitioners train in an efficient and effective way by making available some useful numbers, <strong>data analysis comes with a good share of caution</strong>.</p>
+
+<p>First, the context: data from which the analysis is built upon come from a weighted calisthenics competition. Second, for all computed average values, the reader must always keep in mind that some <strong>standard deviation</strong><d-footnote>Standard deviation: <a href="https://en.wikipedia.org/wiki/Standard_deviation" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/Standard_deviation</a></d-footnote> <strong>around the mean is expected</strong>. Predictions computed from the data, such as <strong>“given your height, what is your expected weight, were you as performant as the average participant?”</strong>, could be used as a first approximation of a target weight while keeping in mind your unique body features.</p>
+
+<p>The forthcoming numbers should be taken in context and will never be a replacement for a (as) complete (as possible) understanding of the needs of the calisthenics practitioner.</p>
+
+<p>Shall we not be deluded by sheer and raw numbers, we can certainly make good use of them!</p>
+
+<p>I will use the data to show that <strong>I am roughly halfway from being average ¯\_(ツ)_/¯</strong>.</p>
+
+<h2 id="weighted-calisthenics">Weighted calisthenics</h2>
+
+<p>In 2022 was held the season 1 of the <strong><a href="https://www.kingofweighted-showdown.com/" rel="external nofollow noopener" target="_blank">King of Weighted Calisthenics</a></strong> competition, an international and internet based event organized by <a href="https://www.youtube.com/c/MichaSchulz" rel="external nofollow noopener" target="_blank">Micha Schulz</a>.</p>
+
+<blockquote>
+  <p>Each participant had to <em>get their <strong>weighted</strong> equipment and record their 1RM<d-footnote>One-repetition maximum: <a href="https://en.wikipedia.org/wiki/One-repetition_maximum" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/One-repetition_maximum</a></d-footnote> attempts for <strong><a href="https://en.wikipedia.org/wiki/Dip_(exercise)" rel="external nofollow noopener" target="_blank">dips</a></strong>, <strong><a href="https://en.wikipedia.org/wiki/Pull-up_(exercise)" rel="external nofollow noopener" target="_blank">pull-ups</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Squat_(exercise)" rel="external nofollow noopener" target="_blank">squats</a></strong> according to some specified rules</em> (especially regarding the range of motion).</p>
+</blockquote>
+
+<p>Similarly to gymnastics, rock climbing and other bodyweight related sports, <strong>calisthenics</strong> emphasizes on the <strong>strength to bodyweight ratio</strong> and tends to fade in the performances of the best athletes across different weight classes.
+However, in <strong>weighted calisthenics</strong>, ones has to lift the additional weight that is attached to one’s body. On one hand, tt seems like the heavier the athlete, the heavier the 1RM additional weight: the <strong>absolute strength</strong> increases with the athlete’s bodyweight. On the other hand, can we say the same thing about the <strong>relative strength</strong>? How does the <strong>added percentage of athlete’s bodyweight</strong> increase with the athlete’s bodyweight?</p>
+
+<p>Let’s find out by analyzing the data!</p>
+
+<h2 id="the-data">The data</h2>
+
+<p>The first step is to <strong>gather and organize the data</strong> in a table and <strong>check for incoherent values</strong>. Because the competition is international, organizers have to take into account both the imperial and metric system. The <strong>metric system is used</strong>: heights are measured in meters and weights in kilograms.</p>
+
+<p>Let’s get a glimpse of the raw data before making them more useful and meaningful.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Athlete number</th>
+      <th>height (m)</th>
+      <th style="text-align: center">bodyweight (kg)</th>
+      <th>dip (kg)</th>
+      <th>pull-up (kg)</th>
+      <th>squat (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.8</td>
+      <td style="text-align: center">95.5</td>
+      <td>160</td>
+      <td>105</td>
+      <td>232.5</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.94</td>
+      <td style="text-align: center">108.5</td>
+      <td>155</td>
+      <td>100</td>
+      <td>240</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1.83</td>
+      <td style="text-align: center">91.6</td>
+      <td>150</td>
+      <td>85</td>
+      <td>236.25</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1.83</td>
+      <td style="text-align: center">90</td>
+      <td>145</td>
+      <td>110</td>
+      <td>212.5</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1.74</td>
+      <td style="text-align: center">82.4</td>
+      <td>130</td>
+      <td>72.5</td>
+      <td>242.5</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1.8</td>
+      <td style="text-align: center">89.8</td>
+      <td>130</td>
+      <td>90</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1.75</td>
+      <td style="text-align: center">86.7</td>
+      <td>120</td>
+      <td>80</td>
+      <td>242.5</td>
+    </tr>
+    <tr>
+      <td>\(\cdots\)</td>
+      <td>\(\cdots\)</td>
+      <td style="text-align: center">\(\cdots\)</td>
+      <td>\(\cdots\)</td>
+      <td>\(\cdots\)</td>
+      <td>\(\cdots\)</td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>1.65</td>
+      <td style="text-align: center">72.8</td>
+      <td>120</td>
+      <td>70</td>
+      <td>190</td>
+    </tr>
+    <tr>
+      <td>144</td>
+      <td>1.78</td>
+      <td style="text-align: center">73.9</td>
+      <td>65.7</td>
+      <td>52.1</td>
+      <td>165.5</td>
+    </tr>
+    <tr>
+      <td>145</td>
+      <td>1.86</td>
+      <td style="text-align: center">109</td>
+      <td>200</td>
+      <td>120</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <td>146</td>
+      <td>1.8</td>
+      <td style="text-align: center">67</td>
+      <td>60</td>
+      <td>50</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>147</td>
+      <td>1.8</td>
+      <td style="text-align: center">82.7</td>
+      <td>145</td>
+      <td>95</td>
+      <td>195</td>
+    </tr>
+    <tr>
+      <td>148</td>
+      <td>1.85</td>
+      <td style="text-align: center">70.1</td>
+      <td>50</td>
+      <td>32</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <td>149</td>
+      <td>1.8</td>
+      <td style="text-align: center">68.9</td>
+      <td>50</td>
+      <td>55</td>
+      <td>120</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In the table, one can see that some weights have a residual .1 kg or .7 kg. It seems like a result of the conversion from the imperial system to the metric system. Therefore, one can see that athlete number 144 is likely an american one. Even in an anonymized database, one must be careful about private informations that can be extracted from it!</p>
+
+<p>After this digression on data confidentiality, let’s dive into the analysis!</p>
+
+<h2 id="athletes-profiles">Athletes profiles</h2>
+
+<p>What does the <strong>average participant</strong> look like?</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>height (m)</th>
+      <th>bodyweight (kg)</th>
+      <th>dip (kg)</th>
+      <th>pull-up (kg)</th>
+      <th>squat (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.76</td>
+      <td>77</td>
+      <td>81.5</td>
+      <td>57</td>
+      <td>144</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>An athletic human being indeed!</strong></p>
+
+<p>Please be aware that, while very few female athletes, there are both male and females athletes in the dataset. Despite our dataset being built only on the participants (thus biased toward their specific characteristics), we can remark that world average male height is 1.77 m, comparable to our computed 1.76 m.</p>
+
+<p>The magnitude of the difference may be explained by the fact that we only considered calisthenics athletes, or by the fact that our dataset included female athletes, but this magnitude falls within the statistical uncertainty of our sample size (of order 0.01 m, i.e. 1 cm). Therefore, we cannot really comment on this difference in any meaningful way.</p>
+
+<p>We hope this small example will help the reader to keep exercising statistical caution while going through the rest of this post.</p>
+
+<p>While averages are interesting, histograms may be more informative.</p>
+
+<p>What does the <strong>height distribution</strong> look like?</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Height histogram of the athletes" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Height histogram of the athletes
+</div>
+<p>From a statistician viewpoint, the dataset is a bit small (150 used profiles) and is bound to be a bit noisy but one can spot two to three spikes in the histogram, indicating that there may be (at least) two to three larger groups of athletes coming from two to three differents parts of the world where the average (male) heights are differents.</p>
+
+<p>What does the <strong>weight distribution</strong> look like?</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/weight-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/weight-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/weight-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/weight.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Weight histogram of the athletes" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Weight histogram of the athletes
+</div>
+<p>Looking at the weight distribution of the athletes, one can spot something that is a bit odd: two major discontinuities at 73 kg and 83 kg. This is the effect of the competition rules! Indeed, there were three weight classes, strictly less than 73 kg (&lt; 73), between 73 kg and 83 kg (73 - 83), and stricly more than 83 kg (&gt; 83). This rule really shows in the weight distribution, in particular close to the 73 kg threshold.</p>
+
+<p>It seems that many athletes tried really hard to get below the 73 kg threshold. Therefore, perhaps to the contrary of what some athletes initially tought, on may imagine that the competition must have been fierced in the less than 73 kg category. Analyzing the data, one can see that athletes between 72 kg and 73 kg are on average as strong (absolute strength) as the average lifter in the 73-83 category. An anomaly<d-footnote>Anomaly Detection: <a href="https://en.wikipedia.org/wiki/Anomaly_detection" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/Anomaly_detection</a></d-footnote> regarding the forthcoming graphics and thus a proof of the fierce competition in this category.</p>
+
+<p>However, seeing how the best athletes in the 73-83 categories have been able to lift a heavier total than the best &lt; 73 athlete, it certainly has been a good decision for athletes close to the 73 kg threshold.</p>
+
+<p>Other <strong>strategic statements</strong> might be analyzed from the data, but this is a topic for another post.</p>
+
+<p>To wrap up this profiling section, let’s look at the correlation between the height and weight of athletes.</p>
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Correlation between height and weight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Correlation between height and weight
+</div>
+<p>While there are some outliers<d-footnote>Outlier: <a href="https://en.wikipedia.org/wiki/Outlier" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/Outlier</a></d-footnote>, the correlation between height and weight is undeniable. One can see a \(\pm\) 5 kg standard deviation around the regression<d-footnote>Regression analysis: <a href="https://en.wikipedia.org/wiki/Regression_analysis" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/Regression_analysis</a></d-footnote> line which could help the intermediate to advanced calisthenics athlete to visualize his or her own situation.</p>
+
+<p>For concision, one can summarize all the previous informations into one plot.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight_joint-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight_joint-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight_joint-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/height_weight_joint.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Profiles of athletes" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Profiles of athletes
+</div>
+
+<p>The regression line shows that <strong>on average, the athlete’s bodyweight increases of 1 kg per 1 cm of height</strong>. Of course, this is the result of a regression and the graph clearly shows the diversity of profiles, even at the same height, and a significant deviation around the mean.</p>
+
+<p><strong>On average, the taller the calisthenics athlete, the heavier.</strong> This was expected but it is still nice to confirm it with data and back up our knowledge.</p>
+
+<p>The regression line allows us to compute, given the height of a calisthenics practitioner, its expected competitive bodyweight. This can constitute a first approximation of a fitness objective, but the practitioner should keep in mind the deviation around this expectation and that the dataset is built with athletes participating to a competition.</p>
+
+<p>For me, whose height is 1.8 m, a reasonable weight computed from those data could therefore be around 81 kg. I am currently weigthing 72 kg, therefore below this landmark. However, I find this computed value a little bit high, especially compared to my other fitness objectives. At the end of this post, I will analyse some features of the athletes having a height of 1.8 m. In particular, we will see that the 1.8 m group has an average weight of 78 kg, which is, as far as I am concerned, a better target value. It seems to me that the computed regression line tends to overestimate the predicted weight. This is may be due to outliers like this one participant whose weight is 112 kg and whose height is 1.77 m.</p>
+
+<p><strong>We met the athletes, let’s see their performances!</strong></p>
+
+<h2 id="athletes-performances">Athletes performances</h2>
+
+<p>As a first step, we compute the <strong>average performances</strong> of the athletes <strong>for each weight class</strong>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>weight class (kg)</th>
+      <th>nbr. of athletes</th>
+      <th>dip (kg)</th>
+      <th>pull-up (kg)</th>
+      <th>squat (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt; 73</td>
+      <td>70</td>
+      <td>72</td>
+      <td>52.7</td>
+      <td>124.4</td>
+    </tr>
+    <tr>
+      <td>73-83</td>
+      <td>45</td>
+      <td>86.8</td>
+      <td>59.5</td>
+      <td>150.7</td>
+    </tr>
+    <tr>
+      <td>&gt; 83</td>
+      <td>33</td>
+      <td>94.4</td>
+      <td>61</td>
+      <td>176.1</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="caption">
+    Average performances of athletes computed by competitive weight class
+</div>
+
+<p><em><strong>Remark:</strong> The total number of athletes, 70+45+33 = 148, is less than the 150 registered because we discarded two incoherent profiles. One of the discarded athlete was registered as 1 meter tall and the other as 5 meter tall.</em></p>
+
+<p>It can be remarked that there are significantly <strong>more athletes in the &lt; 73 kg category</strong>. For the next competition, I will kindly suggest to try to enforce more balanced weight classes. I do think that this would make the competition a bit fairer. I propose two solutions.</p>
+
+<p>Another weight class can be created to make things a bit more even between the atletes of different categories. For instance, if the &lt; 73 kg category were split into a &lt; 70 kg and a 70-73 kg category, the first new one would have 38 participants and the second new one 32.</p>
+
+<p>Of course, I understand that making three categories may be more appealing and that too small categories can create a lack of competition. Based on the current data, it would have been possible (<em>a posteriori</em>) to create the following three balanced weight classes:</p>
+<ul>
+  <li>&lt; 72 kg with 50 participants</li>
+  <li>72 - 81 kg with 49 participants</li>
+  <li>&gt; 81 kg with 49 participants</li>
+</ul>
+
+<p>These two propositions can be merged together in effort to create four <em>as-balanced-as-possible</em> categories. It is interesting to note that other information can be used to set a criterion that define a <strong>fair weight division</strong>. For instance, one could want for the standard deviation of the weights within a weight class to be roughly the same in each class.</p>
+
+<p>From an organizer standpoint, it is worth <strong>investigating the ways to create a fair weight division</strong> while taking into account that a participant may adapt their weight to the announced weight division.
+An <strong>irrealistic mathematician solution</strong> would be to announce the weight division after the participants registered.</p>
+
+<p>Back to the analysis of the original weight division, one can visualize the previous table in the form of a radar chart<d-footnote>Radar chart: <a href="https://en.wikipedia.org/wiki/Radar_chart" rel="external nofollow noopener" target="_blank">https://en.wikipedia.org/wiki/Radar_chart</a></d-footnote> on which one can observe some interesting features.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-10 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/spider-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/spider-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/spider-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/spider.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="radar chart - KWC" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<h2 id="absolute-strength">Absolute strength</h2>
+
+<p>The <strong>absolute strength</strong> refers to the the <strong>total amount of weight</strong> an athlete can lift, regardless of the athlete’s bodyweight.</p>
+
+<p>Here we investigate, for each exercise, the relation between the added weight and the athlete’s bodyweight: <strong>Does the absolute strength increase with the athlete bodyweight?</strong></p>
+
+<p>Unsurprisingly, we find out that, indeed it does, thus justifying the fairness of implementing weight classes in the competiton’s rules.</p>
+
+<h3 id="dip">Dip</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dip-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dip-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dip-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dip.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Added weight in the dip exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Added weight in the <b>dip</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>The <strong>regression line</strong> (in red on the graph) shows that the athlete can roughly <strong>add 1.19 kg of additional weight per additional bodyweight kg</strong> to its 1RM. Of course, this is the result of a regression and the graph clearly shows the diversity of profiles, even at the same weight, as well as a significant deviation around the mean.</p>
+
+<p>This graph and regression line also show that, <strong>on average, the heavier the athlete’s bodyweight, the heavier the athlete’s lift</strong>. This was expected but it is still nice to confirm it with data and back up our knowledge.</p>
+
+<p>The <strong>regression line allows us to compute</strong>, given the bodyweight of a calisthenics practitioner, its <strong>expected 1RM</strong> in the dip exercise. This can constitute a first approximation of a fitness objective, but the practitioner should keep in mind the deviation around this expectation and that the dataset is built with athletes participating to a competition.</p>
+
+<p><strong>For me</strong>, whose weight is 72 kg, a reasonable 1RM computed from those data could therefore be around 75 kg. It has been a few months since I tried weighted dips, but last time I tried, I sent 40 kg.</p>
+
+<p>So yeah, <strong>halfway from being average ¯\_(ツ)_/¯</strong>.</p>
+
+<h3 id="squat">Squat</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squat-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squat-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squat-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squat.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Added weight in the squat exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Added weight in the <b>squat</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>The <strong>regression line</strong> (in red on the graph) shows that the athlete can roughly <strong>add 2.26 kg of additional weight per additional bodyweight kg</strong> to its 1RM. Of course, this is the result of a regression and the graph clearly shows the diversity of profiles, even at the same weight, as well as a significant deviation around the mean.</p>
+
+<p>As above, this graph and regression line also show that, on average, <strong>the heavier the athlete’s bodyweight, the heavier the athlete’s lift</strong>. Those numbers show that the athletes are indeed stronger, even in terms of progression, in the squat than the dip. This was also expected but it is still nice to confirm it with data and back up our knowledge.</p>
+
+<p>The <strong>regression line allows us to compute</strong>, given the bodyweight of a calisthenics practitioner, its <strong>expected 1RM</strong> in the squat exercise. This can constitute a first approximation of a fitness objective, but the practitioner should keep in mind the deviation around this expectation and that the dataset is built with athletes participating to a competition.</p>
+
+<p><strong>For me</strong>, whose weight is 72 kg, a reasonable 1RM computed from those data could therefore be around 132 kg. Although I did a few squats with my girlfriend on my back, I never tried weighted squat so I cannot compare myself to this landmark.</p>
+
+<p>To the best of my knowledge, I am again roughly <strong>halfway from being average ¯\_(ツ)_/¯</strong>.</p>
+
+<h3 id="pull-up">pull-up</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullup-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullup-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullup-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullup.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Added weight in the pull-up exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Added weight in the <b>pull-up</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>The <strong>regression line</strong> (in red on the graph) shows that the athlete can roughly <strong>add 0.54 kg of additional weight per additional bodyweight kg</strong> to its 1RM. Of course, this is the result of a regression and the graph clearly shows the diversity of profiles, even at the same weight, as well as a significant deviation around the mean.</p>
+
+<p>As above, this graph and regression line also show that, on average, <strong>the heavier the athlete’s bodyweight, the heavier the athlete’s lift</strong>. However, one can clearly read that the pull-up is a much more difficult exercise! This was also expected but it is still nice to confirm it with data and back up our knowledge.</p>
+
+<p>The <strong>regression line allows us to compute</strong>, given the bodyweight of a calisthenics practitioner, its <strong>expected 1RM</strong> in the pull-up exercise. This can constitute a first approximation of a fitness objective, but the practitioner should keep in mind the deviation around this expectation and that the dataset is built with athletes participating to a competition.</p>
+
+<p><strong>For me</strong>, whose weight is 72 kg, a reasonable 1RM computed from those data could therefore be around 54 kg. I do not currently train weighted pull-up but this is something that I should definitely be doing. A few month ago, I borrowed a weighted belt (the same day that I performed that weighted dip) and I barely sent a pull-up with an additional 20 kg. Still, I was happy as the pulling strength sure is my weakest one.</p>
+
+<p>Once again, I am roughly <strong>halfway from being average ¯\_(ツ)_/¯</strong>.</p>
+
+<h2 id="relative-strength">Relative strength</h2>
+
+<p>The <strong>relative strength</strong> refers to the <strong>additional proportion of bodyweight</strong> an athlete can lift. It relates the amount of strength an athlete has compared to his or her bodyweight. As a last topic of investigation, we will try to answer this interesting question:</p>
+
+<p><strong>How does the relative strength depends on the athlete’s bodyweight?</strong></p>
+
+<p>In nature, insects have insane relative strength, children are quite strong, but how strong is the calisthenics adult?</p>
+
+<p>I will link the results of this section with the <strong>level system</strong> that is introduced in the <a href="https://stevenlow.org/overcoming-gravity/" rel="external nofollow noopener" target="_blank"><strong>Overcoming Gravity</strong></a> book written by Steven Low. While the book is not open source, the author made the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838" rel="external nofollow noopener" target="_blank"><strong>progression chart</strong></a> available online.</p>
+
+<h3 id="dip-1">Dip</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dipratio-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dipratio-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dipratio-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/dipratio.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Proportion of added weight in the dip exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Proportion of added weight in the <b>dip</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>On average, <strong>for the dip exercise, a participant can add 105 % of its bodyweight</strong>, an impressive number. That is to say, a good calisthenics athlete is roughly at the <strong>level 9</strong> of the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838" rel="external nofollow noopener" target="_blank">progression chart</a> of the <a href="https://stevenlow.org/overcoming-gravity/" rel="external nofollow noopener" target="_blank">Overcoming Gravity</a> book.</p>
+
+<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slighly better the relative strength</strong>. The regression line indicates a gain of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % more of its own bodyweight.</p>
+
+<h3 id="squat-1">Squat</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squatratio-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squatratio-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squatratio-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/squatratio.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Proportion of added weight in the squat exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Proportion of added weight in the <b>squat</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>On average, <strong>for the squat exercise, a participant can add 186 % of its bodyweight</strong>, an impressive number. That is to say, a good calisthenics athlete is roughly at the <strong>level 9-10</strong> of the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838" rel="external nofollow noopener" target="_blank">progression chart</a> of the <a href="https://stevenlow.org/overcoming-gravity/" rel="external nofollow noopener" target="_blank">Overcoming Gravity</a> book (generalization from the weighted pistol squat).</p>
+
+<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slighly better the relative strength</strong>. The regression line indicates a gain of 0.6 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.6 % more of its own bodyweight.</p>
+
+<h3 id="pull-up-1">pull-up</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-13 mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullupratio-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullupratio-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullupratio-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2022-11-15-king-weighted-calisthenics/pullupratio.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="Proportion of added weight in the pull-up exercise as a function of the athlete bodyweight" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Proportion of added weight in the <b>pull-up</b> exercise as a function of the athlete bodyweight
+</div>
+
+<p>On average, <strong>for the pull-up exercise a participant can add 74 % of its bodyweight</strong>, an impressive number. That is to say, a good calisthenics athlete is slightly below the <strong>level 8</strong> of the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838" rel="external nofollow noopener" target="_blank">progression chart</a> of the <a href="https://stevenlow.org/overcoming-gravity/" rel="external nofollow noopener" target="_blank">Overcoming Gravity</a> book.</p>
+
+<p>This is one good level below the two previous pushing exercises. It is interesting because it means one of the two things: the scale of the Overcoming Gravity book is slightly off, or the athletes are slightly lacking in the <em>relative</em> pulling strength. The two hypothesis are possible because Overcoming Gravity readers and the weighted calisthenics community are focusing on slightly different goals.</p>
+
+<p>From the graph, it seems like, for this pulling exercise, <strong>the lighter the athlete, the slighly better the relative strength</strong>. The regression line indicates a loss of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % less of its own bodyweight.</p>
+
+<p>This wrap up our statistical analysis of the data from the <strong><a href="https://www.kingofweighted-showdown.com/" rel="external nofollow noopener" target="_blank">King of Weighted Calisthenics</a></strong> competition.</p>
+
+<h2 id="what-about-me">What about me?</h2>
+
+<p>From what we computed above, one can see that from a weighted calisthenics standpoint, <strong>I am roughly half-average</strong>. However, considering that I truly started my calisthenics journey one year ago, I am happy that I progressed this far and I am thankful that I am still progressing. <strong>Thanks to this competition and this analysis, I have clear goals</strong> that I can aim at during the next few months, maybe years.</p>
+
+<p><strong>Side note:</strong> Regression lines are useful to compute predictions and extrapolate from the data. However, it is sometimes more interesting to use a subset of the data to compute more <em>personalized</em> quantities. The drawback is that since less data are used, the uncertainty of computed quantities is theoretically larger. In practice, it can give more precise predictions because we are generalizing from points that are more similar.</p>
+
+<p><strong>I am 1.8 m.</strong> From the collected data, the subset of athletes with this height have the following average numbers (OG: Overcoming Gravity):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>bodyweight</th>
+      <th>dip</th>
+      <th>pull-up</th>
+      <th>squat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Absolute weights (kg)</td>
+      <td>78</td>
+      <td>89</td>
+      <td>66</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <td>Relative weights (%)</td>
+      <td>100</td>
+      <td>114</td>
+      <td>85</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <td>OG level</td>
+      <td> </td>
+      <td>level 10</td>
+      <td>level 9</td>
+      <td>level 10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Those are quite <strong>challenging goals</strong> for me to have - but what’s the point of a goal if it is not challenging for a bit!</p>
+
+<p>It also show that the Overcoming Gravity scale is quite a good and interesting one. Indeed, level 9-10 is the transition from intermediate to advanced athlete according to the book. It is reasonable to think that the average participant of the King of Weighted calisthenics competition is on the verge of being an advanced athlete and that the top percernts can be considerd closed to (if not) elite athletes.</p>
+
+<p>It is interesting to <strong>compare the above values to the previously computed one</strong> (from the regression). We report the previously computed values below for ease of comparison.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>bodyweight</th>
+      <th>dip</th>
+      <th>pull-up</th>
+      <th>squat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Absolute weights (kg)</td>
+      <td>81</td>
+      <td>75</td>
+      <td>54</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <td>Relative weights (%)</td>
+      <td>100</td>
+      <td>93</td>
+      <td>67</td>
+      <td>163</td>
+    </tr>
+    <tr>
+      <td>OG level</td>
+      <td> </td>
+      <td>level 8-9</td>
+      <td>level 7</td>
+      <td>level 9</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>That is say, considering only the relevant subset of participants, <strong>my new target weight is lighter but my target lifts are heavier…</strong></p>
+
+<p><strong>Wonderful!</strong></p>
+
+<p>What I prefer about the numbers computed from the subset of athletes that are 1.8 meter tall is that they correspond to <strong>a greater relative strength</strong>.</p>
+
+<p><i class="fas fa-door-open" style="font-size: 1.5em; background-color: transparent;"></i> With that, we will close this post. Thank you very much for reading up to this point! If you have any remark or question, feel free to reach me, my door is always open!</p>
+
+      </d-article>
+
+      <d-appendix>
+        <d-footnote-list></d-footnote-list>
+        <d-citation-list></d-citation-list>
+      </d-appendix>
+
+      <d-bibliography src="/assets/bibliography/"></d-bibliography>
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2022 Analy<b>sthenics</b>  . Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+      </div>
+    </footer>
+
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '');
+  </script>
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  
+</body>
+</html>

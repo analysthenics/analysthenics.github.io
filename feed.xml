@@ -1,5 +1,256 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-27T15:45:48+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
-</subtitle><entry><title type="html">King of Weighted Calisthenics: A statistical analysis</title><link href="http://localhost:4000/blog/2022/king-weighted-calisthenics/" rel="alternate" type="text/html" title="King of Weighted Calisthenics: A statistical analysis" /><published>2022-12-25T00:00:00+01:00</published><updated>2022-12-25T00:00:00+01:00</updated><id>http://localhost:4000/blog/2022/king-weighted-calisthenics</id><content type="html" xml:base="http://localhost:4000/blog/2022/king-weighted-calisthenics/"><![CDATA[<p><strong>In this post, we make a first step toward organizing, analyzing and interpreting calisthenics related data. We also show how to use these data to set calisthenics goals.</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-01-08T14:24:27+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
+</subtitle><entry><title type="html">Compute your weighted calisthenics goals for 2023!</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics/" rel="alternate" type="text/html" title="Compute your weighted calisthenics goals for 2023!" /><published>2023-01-04T00:00:00+01:00</published><updated>2023-01-04T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics/"><![CDATA[<h2>Happy New Year!</h2>
+
+<p><strong>In this post, we use New Year as a pretext to write down formulas that computes expected competitive performances based on a calisthenics practioner bodyweight. Hopefully, those expected lifts can be used to set goals for this year and the next to come!</strong></p>
+
+<p><em>Caveat:</em> While we intend to help calisthenics practitioners train in an efficient and effective way by making available some useful numbers, <strong>data analysis comes with a good share of caution</strong>.</p>
+
+<p>First, the context: data from which the analysis is built upon come from a weighted calisthenics competition. Second, for all computed average values, the reader must always keep in mind that some <strong>standard deviation</strong><d-footnote>Standard deviation: <a href="https://en.wikipedia.org/wiki/Standard_deviation">https://en.wikipedia.org/wiki/Standard_deviation</a></d-footnote> <strong>around the mean is expected</strong>. Predictions computed from the data, could be used as a first approximation of a target while keeping in mind your unique body features.</p>
+
+<p><strong>Shall we not be deluded by sheer and raw numbers, we can certainly make good use of them!</strong></p>
+
+<p>In the <a href="/blog/2022/king-weighted-calisthenics/">previous post</a>, the data showed that <strong>I am roughly halfway from being average ¯\_(ツ)_/¯</strong>.</p>
+
+<p>My weighted calisthenics goal is to become an average balanced participant. I present my target lifts at the end of the post, after revealing the formulas.</p>
+
+<h2 id="weighted-calisthenics">Weighted calisthenics</h2>
+
+<p>In 2022 was held the season 1 of the <strong><a href="https://www.kingofweighted-showdown.com/">King of Weighted Calisthenics</a></strong> competition, an international and internet based event organized by <a href="https://www.youtube.com/c/MichaSchulz">Micha Schulz</a>.</p>
+
+<blockquote>
+  <p>Each participant had to <em>get their <strong>weighted</strong> equipment and record their 1RM<d-footnote>One-repetition maximum: <a href="https://en.wikipedia.org/wiki/One-repetition_maximum">https://en.wikipedia.org/wiki/One-repetition_maximum</a></d-footnote> attempts for <strong><a href="https://en.wikipedia.org/wiki/Dip_(exercise)">dips</a></strong>, <strong><a href="https://en.wikipedia.org/wiki/Pull-up_(exercise)">pull-ups</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Squat_(exercise)">squats</a></strong> according to some specified rules</em> (especially regarding the range of motion).</p>
+</blockquote>
+
+<p>In <strong>weighted calisthenics</strong>, one has to lift the additional weight that is attached to one’s body.</p>
+
+<p><strong>Were you a competitive lifter, how much can you expect to lift?</strong></p>
+
+<h2 id="set-a-goal-for-2023">Set a goal for 2023!</h2>
+
+<p>From the data, we compute several formulas, all of the form,</p>
+
+\[goal = a \times bodyweight + b ,\]
+
+<p>where your <strong>goal</strong> will be computed using your <strong>bodyweight</strong> thanks to two coefficients, <strong>a</strong> and <strong>b</strong>.
+Formulas will be computed for all the three lifts: <strong>dip</strong>, <strong>pul-up</strong>, and <strong>squat</strong>. For each lift, we propose two formulas, one corresponding to the predicted <strong>performance of an average participant</strong> (still a good goal for most people) and one corresponding to the predicted <strong>performance of an average <em>abvove average</em> participant</strong>.</p>
+
+<p>To determine what it means to be above average, we computed the total weight lifted by each participant (dip + pull-up + squat) and then divided it by the weight of participant:</p>
+
+\[\text{score} = \frac{\text{dip} + \text{squat} + \text{pull-up}}{\text{bodyweight}}.\]
+
+<p>This <strong>score</strong> is related to the <strong>relative strength</strong> of the participants and allows us to compare participants across weight classes. We then ranked the participants using this score. The <em>above average</em> participants are the top 50% of the chart according to this score.</p>
+
+<p>In the following graphs, the <strong>color of the points</strong> is related to this <strong>score</strong>: the bluer, the smaller the score, the redder, the higher the score. The <strong>size and transparency of the points</strong> are related to the <strong>height</strong> of the athletes: the bigger and darker, the taller.</p>
+
+<h2 id="average-participant">Average participant</h2>
+
+<h3 id="dip">Dip</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_dip-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_dip-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_dip-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_dip.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM dip average" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM dip goal} = 1.19 \times \text{bodyweight} - 10\]
+
+<h3 id="pull-up">Pull-up</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_pullup-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_pullup-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_pullup-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_pullup.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM pull-up average" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM pull-up goal} = 0.54 \times \text{bodyweight} + 15\]
+
+<h3 id="squat">Squat</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_squat-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_squat-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_squat-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/average_squat.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM squat average" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM squat goal} = 2.26 \times \text{bodyweight} - 30\]
+
+<h2 id="average-top-participant">Average top-participant</h2>
+
+<p>In the following plots, the color of a point corresponds to the rank within the top-scorers and is not corresponding to the previously computed color. As you should have seen, top-scorers are mostly above the average in all the lifts. Of course, some of them compensate a “weak” lift with an outstanding other one.</p>
+
+<h3 id="dip-1">Dip</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_dip-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_dip-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_dip-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_dip.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM dip top average" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM dip goal} = 1.73 \times \text{bodyweight} - 28\]
+
+<h3 id="pull-up-1">Pull-up</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_pullup-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_pullup-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_pullup-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_pullup.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM pull-up top average" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM pull-up goal} = 0.92 \times \text{bodyweight} - 0.8\]
+
+<h3 id="squat-1">Squat</h3>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_squat-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_squat-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_squat-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-4-king-weighted-calisthenics/top_squat.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" title="1RM squat top average" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+\[\bf \text{1RM squat goal} = 2.16 \times \text{bodyweight} + 6.6\]
+
+<h2 id="what-about-me">What about me?</h2>
+
+<p><strong>Thanks to this competition and this analysis, I have clear goals</strong> that I can aim at during the next few months, maybe years.</p>
+
+<p><strong>Side note:</strong> Regression lines are useful to compute predictions and extrapolate from the data. However, it is sometimes more interesting to use a subset of the data to compute more <em>personalized</em> quantities. The drawback is that since less data are used, the uncertainty of computed quantities is theoretically larger. In practice, it can give more precise predictions because we are generalizing from points that are more similar.</p>
+
+<p>I started my calisthenics journey in November 2021, it is therefore expected that my weight is still changing and that I will probably gain some muscle mass in the next months. I therefore somehow makes more sense to first compute a target weight from my height and then compute the associated target lifts. Easy enough with all the data!</p>
+
+<p><strong>I am 1.8 m.</strong> From the collected data, the subset of athletes with this height have the following average numbers (OG: Overcoming Gravity):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>bodyweight</th>
+      <th>dip</th>
+      <th>pull-up</th>
+      <th>squat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Absolute weights (kg)</td>
+      <td>78</td>
+      <td>89</td>
+      <td>66</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <td>Relative weights (%)</td>
+      <td>100</td>
+      <td>114</td>
+      <td>85</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <td>OG level</td>
+      <td> </td>
+      <td>level 10</td>
+      <td>level 9</td>
+      <td>level 10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Those are quite <strong>challenging goals</strong> for me to have - but what’s the point of a goal if it is not challenging for a bit!</p>
+
+<p>However, those goals are definitely not one year goals.<br />
+Nonetheless, let’s see how close I can get!</p>
+
+<p><strong>Let’s meet on this blog in a year to check my results!</strong></p>
+
+<p><i class="fas fa-door-open" style="font-size: 1.5em; background-color: transparent;"></i> With that, we will close this post. Thank you very much for reading up to this point! If you have any remark or question, feel free to reach me, my door is always open!</p>]]></content><author><name>Fabien Pesquerel</name></author><category term="calisthenics" /><category term="calisthenics" /><category term="data-analysis" /><summary type="html"><![CDATA[Formulas from the statistical analysis of the King of Calisthenics competition]]></summary></entry><entry><title type="html">King of Weighted Calisthenics: A statistical analysis</title><link href="http://localhost:4000/blog/2022/king-weighted-calisthenics/" rel="alternate" type="text/html" title="King of Weighted Calisthenics: A statistical analysis" /><published>2022-12-25T00:00:00+01:00</published><updated>2022-12-25T00:00:00+01:00</updated><id>http://localhost:4000/blog/2022/king-weighted-calisthenics</id><content type="html" xml:base="http://localhost:4000/blog/2022/king-weighted-calisthenics/"><![CDATA[<p><strong>In this post, we make a first step toward organizing, analyzing and interpreting calisthenics related data. We also show how to use these data to set calisthenics goals.</strong></p>
 
 <p>We hope this analysis will help the interested practitioner in their calisthenics journey, as it will <strong>set baselines</strong> that he or she can compare against.</p>
 

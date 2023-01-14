@@ -1,5 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-01-08T16:12:38+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
-</subtitle><entry><title type="html">Compute your weighted calisthenics goals for 2023!</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics/" rel="alternate" type="text/html" title="Compute your weighted calisthenics goals for 2023!" /><published>2023-01-04T00:00:00+01:00</published><updated>2023-01-04T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics/"><![CDATA[<h2>Happy New Year!</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-01-14T17:10:36+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
+</subtitle><entry><title type="html">Ranking athletes across weight classes</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics2/" rel="alternate" type="text/html" title="Ranking athletes across weight classes" /><published>2023-01-11T00:00:00+01:00</published><updated>2023-01-11T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics2</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics2/"><![CDATA[<h2>Overall, who is the strongest?</h2>
+
+<p><strong>In this post, we wonder how to compare performances of athletes across weight classes.</strong></p>
+
+<p>We consider participants to the season 1 of the <strong><a href="https://www.kingofweighted-showdown.com/">King of Weighted Calisthenics</a></strong> competition, an international and internet based event organized by <a href="https://www.youtube.com/c/MichaSchulz">Micha Schulz</a>. <br />During this <strong>weighted calisthenics competition</strong>,</p>
+
+<blockquote>
+  <p>each participant had to <em>get their <strong>weighted</strong> equipment and record their 1RM<d-footnote>One-repetition maximum: <a href="https://en.wikipedia.org/wiki/One-repetition_maximum">https://en.wikipedia.org/wiki/One-repetition_maximum</a></d-footnote> attempts for <strong><a href="https://en.wikipedia.org/wiki/Dip_(exercise)">dips</a></strong>, <strong><a href="https://en.wikipedia.org/wiki/Pull-up_(exercise)">pull-ups</a></strong> and <strong><a href="https://en.wikipedia.org/wiki/Squat_(exercise)">squats</a></strong> according to some specified rules</em> (especially regarding the range of motion).</p>
+</blockquote>
+
+<p>Using the work done by the <a href="https://www.powerlifting.sport/">International Powerlifting Association</a>, we compute a formula similar to their <a href="https://www.powerlifting.sport/rules/codes/info/ipf-formula">IPF GL</a> that allows to rank all participating athletes according to a point system.</p>
+
+<p>The <strong>total mass</strong> lifted by a participant is the sum of all its three lifts,</p>
+
+\[\text{total lifted mass} = \text{dip} + \text{squat} + \text{pull-up},\]
+
+<p>and it mainly increases with the weight class, i.e., the heavier the athletes, the heavier they can lift.<d-footnote>I would need a study/meta-analysis to back-up this claim. If you know a reliable one, please contact me and I will add a reference.</d-footnote> Therefore, the <strong>total lifted mass</strong> is not a good scoring system to compare performances of athletes with different body features as it favors heavier athletes without considering the <em>exerted effort relative to body features</em>. If the total strength of heavier athletes is systematically larger than the one of heavier athletes, then this say something about the physiology of human beings (as a group) but not about the <em>exerted effort</em> of individual athletes.</p>
+
+<p>On the other hand, <strong>the relative total lifted mass</strong>,</p>
+
+\[\text{relative total lifted mass} = \frac{\text{dip} + \text{squat} + \text{pull-up}}{\text{bodyweight}},\]
+
+<p>is said to systematically favor lighter athletes<d-footnote>I would need a study/meta-analysis to back-up this claim. If you know a reliable one, please contact me and I will add a reference.</d-footnote> and therefore is not a good scoring system. If the relative strength of lighter athletes is systematically larger than the one of heavier athletes, then this say something about the physiology of human beings (as a group) but not about the <em>exerted effort</em> of individual athletes.</p>
+
+<p><strong>So, how do we compute a (as good as possible) point system?</strong></p>
+
+<h2 id="computing-a-point-system">Computing a point system</h2>
+
+<p>We use an approach that we deem similar to the IPF one. The number of points of an athlete will be of the form</p>
+
+\[\text{points} = \frac{\text{total mass lifted}}{\text{predicted best lift} (\text{body features})},\]
+
+<p>where <em>predicted best lift</em> is a function that, given an athlete’s body features, compute its expected best lift. This function should therefore be related to the maximal strength performance an athlete can produce, given its body features. The number of points is then the <em>ratio</em> between its actual lift and this prediction. If this ratio is smaller than one, the athletes <em>underperformed</em> compared to the prediction, while a ratio larger than one should indicate a strong athlete that outperform this prediction. If the quality of the prediction is good enough, then this <strong>point system</strong> is reasonable enough.</p>
+
+<p>However, the question of the prediction function remains. We first try to answer the following question: <strong>given an athlete’s <em>body features</em>, what is the largest <em>reasonable total mass</em> the athlete could have lift?</strong></p>
+
+<h2 id="computing-a-strength-prediction-function">Computing a strength prediction function</h2>
+
+<h3 id="which-body-features">Which body features?</h3>
+
+<p>The more body features we decide to use, the more complicated the formula might end up. We want to <strong>find measurable body features with a high predictive power</strong> for the performances of the best athletes with those features. <strong>A very simple hypothesis</strong> that is made by the IPF is that <strong>the best an athlete could have lift is a function of its bodyweight only</strong>. I will use this hypothesis in the remaining of this post. However, I do think that the height of an athlete is an important feature as well, as it is related to the length of most of the limbs. On the other hand, for high level powerlifting competition, such as the one organized by the IPF, athletes of similar height tends to have a similar physical build as opposed to what can be observed in the general population. In theory, one could try use the body composition measured and computed by a DEXA scan.<d-footnote><a href="https://en.wikipedia.org/wiki/Body_composition#DEXA">https://en.wikipedia.org/wiki/Body_composition#DEXA</a></d-footnote> However, finding a good formula is hard enough with the bodyweight only, and adding all those features won’t really simplify the task. One way around that would be to use neural network,<d-footnote><a href="https://en.wikipedia.org/wiki/Artificial_neural_network">https://en.wikipedia.org/wiki/Artificial_neural_network</a></d-footnote> but this is a topic for another post!</p>
+
+<p><strong><em>Remark:</em></strong> Unfortunately, while it is quite an important body feature on its own, one could only compute a formula for male participants. There were not enough female participants at the king of weighted competition to compute any relevant formula. The reasoning is independent of the sex, but the specific computed number later are expected to be different depending on the sex.</p>
+
+<p>We therefore aim to find a function <em>predicted best lift</em> such that,</p>
+
+\[\text{largest reasonable total lifted mass} = \text{predicted best lift} (\text{bodyweight}) .\]
+
+<h3 id="which-function">Which function?</h3>
+
+<p>How do we find such a function?</p>
+
+<p>Our model state that the strength of athletes increases with the bodyweight, hence the <em>predicted best lift</em> function should be <strong>strictly monotonic increasing</strong>.<d-footnote><a href="https://en.wiktionary.org/wiki/monotonic_increasing">https://en.wiktionary.org/wiki/monotonic_increasing</a></d-footnote> Our model also state that the strength of athletes obeys a law of diminishing return,<d-footnote><a href="https://en.wikipedia.org/wiki/Diminishing_returns">https://en.wikipedia.org/wiki/Diminishing_returns</a></d-footnote> <em>i.e.</em>, the relative strength decreases, hence the <em>predicted best lift</em> function should be <strong>concave</strong>.<d-footnote><a href="https://en.wikipedia.org/wiki/Concave_function">https://en.wikipedia.org/wiki/Concave_function</a></d-footnote> While we decided upon some necessary properties of our model, those are far from sufficient to pick a function. As far as I wanted to derive a formula based on necessary and sufficient properties<d-footnote>If you are a sport scientist interested in this topic and want to try a few ideas, please reach me out!</d-footnote>, I am not a sport scientist and I will have to rely on existing formulas.</p>
+
+<p>The IPF suggest the following function,</p>
+
+\[a - b \exp ( -c \times \text{bodyweight}),\]
+
+<p>where $a$, $b$, and $c$ are positive coefficients, and $\exp$ is the exponential function.<d-footnote><a href="https://en.wikipedia.org/wiki/Exponential_function">https://en.wikipedia.org/wiki/Exponential_function</a></d-footnote>  As far as I am concerned, my first guess would have been to try something like</p>
+
+\[a + b \times \text{bodyweight} + c \ln (\text{bodyweight} + d),\]
+
+<p>where $a$, $b$, $c$ and $d$ are coefficients, and $\ln$ is the logarithm function.<d-footnote><a href="https://en.wikipedia.org/wiki/Natural_logarithm">https://en.wikipedia.org/wiki/Natural_logarithm</a></d-footnote>  However, I am not a sport scientist so we will use the formula suggested by the IPF.</p>
+
+<h3 id="which-coefficients">Which coefficients?</h3>
+
+<p>To find the coefficients $a$, $b$, and $c$ of the proposed formula, we will rely on the data from the king of weighted competition. The aim of the formula is to compute a reasonable <strong>best performance</strong>. Therefore, we first compute the considered <strong>top-20%</strong> athletes and then use those performances to compute the values of the coefficients.</p>
+
+<p>By only using the subset of athletes that are <strong>top-performer</strong>, we ensure that our function will effectively <strong>compute</strong> an approximation of the <strong>expected best lift</strong> of an athlete given its bodyweight. The threshold must be high enough so that we only consider top-performer. However, it should be low enough that we have enough data, represents of almost all bodyweight and that we consider more than the absolute best. Considering only the absolute best would be a mistake as it could diminish the number of points a participants of similar weight would receive because a once-in-a-century athletes has similar features. Hence, the expression <em>reasonable best</em> lift that we used.</p>
+
+<p>To compute the coefficients, we use a technique called regression analysis,<d-footnote><a href="https://en.wikipedia.org/wiki/Regression_analysis">https://en.wikipedia.org/wiki/Regression_analysis</a></d-footnote> where we try to find the coefficients that fit the data the best. Let’s do that and see how it looks!</p>
+
+<p>In the following graph, the <strong>color of the points</strong> is related to the <strong>number of points</strong>: the bluer, the smaller the number of points, the redder, the higher the number of points. The <strong>size and transparency of the points</strong> are also related to the number of points: the bigger and darker, the larger the number of points.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-1-11-king-weighted-calisthenics2/result-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-1-11-king-weighted-calisthenics2/result-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-1-11-king-weighted-calisthenics2/result-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-1-11-king-weighted-calisthenics2/result.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<p>The plotted curve does seem like the graph of a descent <em>largest reasonable total lifted mass</em> function. The attributed number of points also does seem to be coherent with the point system we wished to build.</p>
+
+<h2 id="overall-winner-of-the-competition">Overall winner of the competition</h2>
+
+<p>No need to prolong the suspense any longer, according to this point system, the overall winner of the competition is <a href="https://www.instagram.com/joelcatena/">Joel Catena</a>!</p>
+
+<p><strong>Congratulations!</strong></p>
+
+<p><i class="fas fa-door-open" style="font-size: 1.5em; background-color: transparent;"></i> With that, we will close this post. Thank you very much for reading up to this point! If you have any remark or question, feel free to reach me, my door is always open!</p>]]></content><author><name>Fabien Pesquerel</name></author><category term="calisthenics" /><category term="calisthenics" /><category term="data-analysis" /><summary type="html"><![CDATA[Point system from the statistical analysis of the King of Calisthenics competition]]></summary></entry><entry><title type="html">Compute your weighted calisthenics goals for 2023!</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics/" rel="alternate" type="text/html" title="Compute your weighted calisthenics goals for 2023!" /><published>2023-01-04T00:00:00+01:00</published><updated>2023-01-04T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics/"><![CDATA[<h2>Happy New Year!</h2>
 
 <p><strong>In this post, we use New Year as a pretext to write down formulas that computes expected competitive performances based on a calisthenics practitioner bodyweight. Hopefully, those expected lifts can be used to set goals for this year and the next to come!</strong></p>
 
@@ -418,7 +521,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
   </tbody>
 </table>
 
-<p>In the table, one can see that some weights have a residual .1 kg or .7 kg. It seems like a result of the conversion from the imperial system to the metric system. Therefore, one can see that athlete number 144 is likely an american one. Even in an anonymized database, one must be careful about private informations that can be extracted from it!</p>
+<p>In the table, one can see that some weights have a residual .1 kg or .7 kg. It seems like a result of the conversion from the imperial system to the metric system. Therefore, one can see that athlete number 144 is likely an american one. Even in an anonymized database, one must be careful about private information that can be extracted from it!</p>
 
 <p>After this digression on data confidentiality, let’s dive into the analysis!</p>
 
@@ -482,7 +585,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 <div class="caption">
     Height histogram of the athletes
 </div>
-<p>From a statistician viewpoint, the dataset is a bit small (150 used profiles) and is bound to be a bit noisy but one can spot two to three spikes in the histogram, indicating that there may be (at least) two to three larger groups of athletes coming from two to three differents parts of the world where the average (male) heights are differents.</p>
+<p>From a statistician viewpoint, the dataset is a bit small (150 used profiles) and is bound to be a bit noisy but one can spot two to three spikes in the histogram, indicating that there may be (at least) two to three larger groups of athletes coming from two to three different parts of the world where the average (male) heights are different.</p>
 
 <p>What does the <strong>weight distribution</strong> look like?</p>
 
@@ -509,9 +612,9 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 <div class="caption">
     Weight histogram of the athletes
 </div>
-<p>Looking at the weight distribution of the athletes, one can spot something that is a bit odd: two major discontinuities at 73 kg and 83 kg. This is the effect of the competition rules! Indeed, there were three weight classes, strictly less than 73 kg (&lt; 73), between 73 kg and 83 kg (73 - 83), and stricly more than 83 kg (&gt; 83). This rule really shows in the weight distribution, in particular close to the 73 kg threshold.</p>
+<p>Looking at the weight distribution of the athletes, one can spot something that is a bit odd: two major discontinuities at 73 kg and 83 kg. This is the effect of the competition rules! Indeed, there were three weight classes, strictly less than 73 kg (&lt; 73), between 73 kg and 83 kg (73 - 83), and strictly more than 83 kg (&gt; 83). This rule really shows in the weight distribution, in particular close to the 73 kg threshold.</p>
 
-<p>It seems that many athletes tried really hard to get below the 73 kg threshold. Therefore, perhaps to the contrary of what some athletes initially tought, on may imagine that the competition must have been fierced in the less than 73 kg category. Analyzing the data, one can see that athletes between 72 kg and 73 kg are on average as strong (absolute strength) as the average lifter in the 73-83 category. An anomaly<d-footnote>Anomaly Detection: <a href="https://en.wikipedia.org/wiki/Anomaly_detection">https://en.wikipedia.org/wiki/Anomaly_detection</a></d-footnote> regarding the forthcoming graphics and thus a proof of the fierce competition in this category.</p>
+<p>It seems that many athletes tried really hard to get below the 73 kg threshold. Therefore, perhaps to the contrary of what some athletes initially thought, on may imagine that the competition must have been fierce in the less than 73 kg category. Analyzing the data, one can see that athletes between 72 kg and 73 kg are on average as strong (absolute strength) as the average lifter in the 73-83 category. An anomaly<d-footnote>Anomaly Detection: <a href="https://en.wikipedia.org/wiki/Anomaly_detection">https://en.wikipedia.org/wiki/Anomaly_detection</a></d-footnote> regarding the forthcoming graphics and thus a proof of the fierce competition in this category.</p>
 
 <p>However, seeing how the best athletes in the 73-83 categories have been able to lift a heavier total than the best &lt; 73 athlete, it certainly has been a good decision for athletes close to the 73 kg threshold.</p>
 
@@ -543,7 +646,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 </div>
 <p>While there are some outliers<d-footnote>Outlier: <a href="https://en.wikipedia.org/wiki/Outlier">https://en.wikipedia.org/wiki/Outlier</a></d-footnote>, the correlation between height and weight is undeniable. One can see a \(\pm\) 5 kg standard deviation around the regression<d-footnote>Regression analysis: <a href="https://en.wikipedia.org/wiki/Regression_analysis">https://en.wikipedia.org/wiki/Regression_analysis</a></d-footnote> line which could help the intermediate to advanced calisthenics athlete to visualize his or her own situation.</p>
 
-<p>For concision, one can summarize all the previous informations into one plot.</p>
+<p>For concision, one can summarize all the previous information into one plot.</p>
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-10 mt-3 mt-md-0">
@@ -575,7 +678,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 
 <p>The regression line allows us to compute, given the height of a calisthenics practitioner, its expected competitive bodyweight. This can constitute a first approximation of a fitness objective, but the practitioner should keep in mind the deviation around this expectation and that the dataset is built with athletes participating to a competition.</p>
 
-<p>For me, whose height is 1.8 m, a reasonable weight computed from those data could therefore be around 81 kg. I am currently weigthing 72 kg, therefore below this landmark. However, I find this computed value a little bit high, especially compared to my other fitness objectives. At the end of this post, I will analyse some features of the athletes having a height of 1.8 m. In particular, we will see that the 1.8 m group has an average weight of 78 kg, which is, as far as I am concerned, a better target value. It seems to me that the computed regression line tends to overestimate the predicted weight. This is may be due to outliers like this one participant whose weight is 112 kg and whose height is 1.77 m.</p>
+<p>For me, whose height is 1.8 m, a reasonable weight computed from those data could therefore be around 81 kg. I am currently weighting 72 kg, therefore below this landmark. However, I find this computed value a little bit high, especially compared to my other fitness objectives. At the end of this post, I will analyze some features of the athletes having a height of 1.8 m. In particular, we will see that the 1.8 m group has an average weight of 78 kg, which is, as far as I am concerned, a better target value. It seems to me that the computed regression line tends to overestimate the predicted weight. This is may be due to outliers like this one participant whose weight is 112 kg and whose height is 1.77 m.</p>
 
 <p><strong>We met the athletes, let’s see their performances!</strong></p>
 
@@ -626,7 +729,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 
 <p>It can be remarked that there are significantly <strong>more athletes in the &lt; 73 kg category</strong>. For the next competition, I will kindly suggest to try to enforce more balanced weight classes. I do think that this would make the competition a bit fairer. I propose two solutions.</p>
 
-<p>Another weight class can be created to make things a bit more even between the atletes of different categories. For instance, if the &lt; 73 kg category were split into a &lt; 70 kg and a 70-73 kg category, the first new one would have 38 participants and the second new one 32.</p>
+<p>Another weight class can be created to make things a bit more even between the athletes of different categories. For instance, if the &lt; 73 kg category were split into a &lt; 70 kg and a 70-73 kg category, the first new one would have 38 participants and the second new one 32.</p>
 
 <p>Of course, I understand that making three categories may be more appealing and that too small categories can create a lack of competition. Based on the current data, it would have been possible (<em>a posteriori</em>) to create the following three balanced weight classes:</p>
 <ul>
@@ -638,7 +741,7 @@ However, in <strong>weighted calisthenics</strong>, ones has to lift the additio
 <p>These two propositions can be merged together in effort to create four <em>as-balanced-as-possible</em> categories. It is interesting to note that other information can be used to set a criterion that define a <strong>fair weight division</strong>. For instance, one could want for the standard deviation of the weights within a weight class to be roughly the same in each class.</p>
 
 <p>From an organizer standpoint, it is worth <strong>investigating the ways to create a fair weight division</strong> while taking into account that a participant may adapt their weight to the announced weight division.
-An <strong>irrealistic mathematician solution</strong> would be to announce the weight division after the participants registered.</p>
+An <strong>unrealistic mathematician solution</strong> would be to announce the weight division after the participants registered.</p>
 
 <p>Back to the analysis of the original weight division, one can visualize the previous table in the form of a radar chart<d-footnote>Radar chart: <a href="https://en.wikipedia.org/wiki/Radar_chart">https://en.wikipedia.org/wiki/Radar_chart</a></d-footnote> on which one can observe some interesting features.</p>
 
@@ -669,7 +772,7 @@ An <strong>irrealistic mathematician solution</strong> would be to announce the 
 
 <p>Here we investigate, for each exercise, the relation between the added weight and the athlete’s bodyweight: <strong>Does the absolute strength increase with the athlete bodyweight?</strong></p>
 
-<p>Unsurprisingly, we find out that, indeed it does, thus justifying the fairness of implementing weight classes in the competiton’s rules.</p>
+<p>Unsurprisingly, we find out that, indeed it does, thus justifying the fairness of implementing weight classes in the competition’s rules.</p>
 
 <h3 id="dip">Dip</h3>
 
@@ -817,7 +920,7 @@ An <strong>irrealistic mathematician solution</strong> would be to announce the 
 
 <p>On average, <strong>for the dip exercise, a participant can add 105 % of its bodyweight</strong>, an impressive number. That is to say, a good calisthenics athlete is roughly at the <strong>level 9</strong> of the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838">progression chart</a> of the <a href="https://stevenlow.org/overcoming-gravity/">Overcoming Gravity</a> book.</p>
 
-<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slighly better the relative strength</strong>. The regression line indicates a gain of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % more of its own bodyweight.</p>
+<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slightly better the relative strength</strong>. The regression line indicates a gain of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % more of its own bodyweight.</p>
 
 <h3 id="squat-1">Squat</h3>
 
@@ -847,7 +950,7 @@ An <strong>irrealistic mathematician solution</strong> would be to announce the 
 
 <p>On average, <strong>for the squat exercise, a participant can add 186 % of its bodyweight</strong>, an impressive number. That is to say, a good calisthenics athlete is roughly at the <strong>level 9-10</strong> of the <a href="https://docs.google.com/spreadsheets/d/19l4tVfdTJLheLMwZBYqcw1oeEBPRh8mxngqrCz2YnVg/edit#gid=2032740838">progression chart</a> of the <a href="https://stevenlow.org/overcoming-gravity/">Overcoming Gravity</a> book (generalization from the weighted pistol squat).</p>
 
-<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slighly better the relative strength</strong>. The regression line indicates a gain of 0.6 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.6 % more of its own bodyweight.</p>
+<p>From the graph, it seems like, for this pushing exercise, <strong>the heavier the athlete, the slightly better the relative strength</strong>. The regression line indicates a gain of 0.6 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.6 % more of its own bodyweight.</p>
 
 <h3 id="pull-up-1">pull-up</h3>
 
@@ -879,7 +982,7 @@ An <strong>irrealistic mathematician solution</strong> would be to announce the 
 
 <p>This is one good level below the two previous pushing exercises. It is interesting because it means one of the two things: the scale of the Overcoming Gravity book is slightly off, or the athletes are slightly lacking in the <em>relative</em> pulling strength. The two hypothesis are possible because Overcoming Gravity readers and the weighted calisthenics community are focusing on slightly different goals.</p>
 
-<p>From the graph, it seems like, for this pulling exercise, <strong>the lighter the athlete, the slighly better the relative strength</strong>. The regression line indicates a loss of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % less of its own bodyweight.</p>
+<p>From the graph, it seems like, for this pulling exercise, <strong>the lighter the athlete, the slightly better the relative strength</strong>. The regression line indicates a loss of 0.2 % bodyweight strength per kg of bodyweight: For each additional kg of bodyweight, an average (good) athlete can lift 0.2 % less of its own bodyweight.</p>
 
 <p>This wrap up our statistical analysis of the data from the <strong><a href="https://www.kingofweighted-showdown.com/">King of Weighted Calisthenics</a></strong> competition.</p>
 
@@ -928,7 +1031,7 @@ An <strong>irrealistic mathematician solution</strong> would be to announce the 
 
 <p>Those are quite <strong>challenging goals</strong> for me to have - but what’s the point of a goal if it is not challenging for a bit!</p>
 
-<p>It also show that the Overcoming Gravity scale is quite a good and interesting one. Indeed, level 9-10 is the transition from intermediate to advanced athlete according to the book. It is reasonable to think that the average participant of the King of Weighted calisthenics competition is on the verge of being an advanced athlete and that the top percernts can be considerd closed to (if not) elite athletes.</p>
+<p>It also show that the Overcoming Gravity scale is quite a good and interesting one. Indeed, level 9-10 is the transition from intermediate to advanced athlete according to the book. It is reasonable to think that the average participant of the King of Weighted calisthenics competition is on the verge of being an advanced athlete and that the top percents can be considered closed to (if not) elite athletes.</p>
 
 <p>It is interesting to <strong>compare the above values to the previously computed one</strong> (from the regression). We report the previously computed values below for ease of comparison.</p>
 

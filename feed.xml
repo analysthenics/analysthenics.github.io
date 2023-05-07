@@ -1,5 +1,738 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-01-14T17:10:36+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
-</subtitle><entry><title type="html">Ranking athletes across weight classes</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics2/" rel="alternate" type="text/html" title="Ranking athletes across weight classes" /><published>2023-01-11T00:00:00+01:00</published><updated>2023-01-11T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics2</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics2/"><![CDATA[<h2>Overall, who is the strongest?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-05-07T15:49:38+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Analy&lt;b&gt;sthenics&lt;/b&gt;</title><subtitle>&lt;b&gt;Analy&lt;/b&gt;sis of cali&lt;b&gt;sthenics&lt;/b&gt; related **data**
+</subtitle><entry><title type="html">Men Artistic Gymnasticsthe 2017-2020 quadstatistical analysis</title><link href="http://localhost:4000/blog/2023/mag-scores-podium/" rel="alternate" type="text/html" title="Men Artistic Gymnasticsthe 2017-2020 quadstatistical analysis" /><published>2023-04-23T00:00:00+02:00</published><updated>2023-04-23T00:00:00+02:00</updated><id>http://localhost:4000/blog/2023/mag-scores-podium</id><content type="html" xml:base="http://localhost:4000/blog/2023/mag-scores-podium/"><![CDATA[<p>In this post, we analyze gymnastics data from Artistic Gymnastics World Championships and Olympic Games organized by the International Gymnastics Federation (French: <a href="https://www.gymnastics.sport/site/">Fédération Internationale de Gymnastique</a>).</p>
+
+<p><strong>Because the Code of Points change after every Olympics Games, we study the 2017-2020 period in order to keep the data coherent.</strong></p>
+
+<h2 id="a-word-about-gymnastics">A word about gymnastics</h2>
+
+<p>There are 6 <strong>apparatus</strong> in Men Artistic Gymnastics (MAG): floor, pommel horse, still rings, vault, parallel bars, and high bar. The performance of a gymnast on an apparatus is called a <strong>routine</strong>.</p>
+
+<p>The <strong>score</strong> of a routine is decomposed into two scores: the <strong>Execution score</strong> (E score) and the <strong>Difficulty score</strong> (D score). The D score is determined by the <strong>elements</strong> and <strong>combination of elements</strong> performed by a gymnast. The <strong>Difficulty Value</strong> of each element is written in the <strong>Code of Points</strong>, a code that is changed every four years after each Olympic Games. The <strong>Execution score</strong> of a routine is computed by subtracting from a total of 10 points, a prescribed number of points for each <em>error</em> that are spotted by the execution jury. Usually, 0.1 points are lost for small mistake, 0.3 for medium one and 0.5 for large error. One full point can be removed for a fall (or bumping into the apparatus). The <strong>Total score</strong> of a routine is the sum of the <strong>D score</strong> and <strong>E score</strong>.</p>
+
+<p>There are seven events in a MAG competition: one for each apparatus and one called the all-around. In an <strong>all-around event</strong>, gymnasts execute a routine on each apparatus and are ranked by the sum of all apparatus’ scores.</p>
+
+<h2 id="what-do-we-study">What do we study?</h2>
+
+<blockquote>
+  <p>For each event, we try to understand how the total score, total D-score, and total E-score can vary as a function of the rank.</p>
+</blockquote>
+
+<p>To do so, for each event, we plot:</p>
+<ul>
+  <li>the event total score as a function of the rank</li>
+  <li>the D score as a function of the rank</li>
+  <li>the E score as a function of the rank</li>
+  <li>the E score as a function of the D score</li>
+</ul>
+
+<p>We plot the E score as a function of the D score to better illustrate the potential trade-off between E score and D score.</p>
+
+<h2 id="floor">Floor</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Floor score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Floor D score as a function of the rank
+</div>
+<p style="font-size: 2">The best D-scorer of this period is <a href="https://www.instagram.com/kenzoshirai/">Shirai Kenzo</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Floor E score as a function of the rank
+</div>
+<p>The best E-scorers of this period are <a href="https://www.instagram.com/c_edrielzxs/">Carlos Edriel Yulo</a> and <a href="https://www.instagram.com/dolgopyat_artem/">Artem Dolgopyat</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/floor/Floor%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Floor E score as a function of the D score
+</div>
+
+<h2 id="pommel-horse">Pommel Horse</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Pommel horse score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Pommel horse D score as a function of the rank
+</div>
+<p>The best D-scorer of this period is <a href="https://www.instagram.com/maxwhitlock/">Max Whitlock</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Pommel horse E score as a function of the rank
+</div>
+<p>The best E-scorer of this period is <a href="https://www.instagram.com/rhysmcc1/">Rhys McClenaghan</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/pommel_horse/Pommel%20horse%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Pommel horse E score as a function of the D score
+</div>
+
+<h2 id="still-rings">Still Rings</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Still rings score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Still rings D score as a function of the rank
+</div>
+<p>The best D-scorer of this period is You Hao.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Still rings E score as a function of the rank
+</div>
+<p>The best E-scorer of this period is <a href="https://www.instagram.com/eleftherios_petrounias/">Eleftherios Petrounias</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/still_rings/Still%20rings%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Still rings E score as a function of the D score
+</div>
+
+<h2 id="vault">Vault</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Vault score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Vault D score as a function of the rank
+</div>
+<p>The best D-scorer of this period is Ri Se Gwang.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Vault E score as a function of the rank
+</div>
+<p>The best E-scorer of this period is <a href="https://www.instagram.com/kenzoshirai/">Shirai Kenzo</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/vault/Vault%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Vault E score as a function of the D score
+</div>
+
+<h2 id="parallel-bars">Parallel Bars</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Parallel bars score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Parallel bars D score as a function of the rank
+</div>
+<p>The best D-scorers of this period are <a href="https://www.instagram.com/ferhataricann/">Ferhat Arican</a> and <a href="https://www.instagram.com/zou_jingyuan/">Zou Jingyuan</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Parallel bars E score as a function of the rank
+</div>
+<p>The best E-scorer of this period is <a href="https://www.instagram.com/zou_jingyuan/">Zou Jingyuan</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/parallel_bars/Parallel%20bars%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    Parallel bars E score as a function of the D score
+</div>
+
+<h2 id="high-bar">High Bar</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    High bar score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    High bar D score as a function of the rank
+</div>
+<p>The best D-scorer of this period is <a href="https://www.instagram.com/epkez/">Epke Zonderland</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    High bar E score as a function of the rank
+</div>
+<p>The best E-scorer of this period is <a href="https://www.instagram.com/arthurnory/">Arthur Mariano</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/high_bar/High%20Bar%20E%20score%20as%20a%20function%20of%20the%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    High bar E score as a function of the D score
+</div>
+
+<h2 id="all-around">All Around</h2>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    All-around score as a function of the rank
+</div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20D%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20D%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20D%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20D%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    All-around D score as a function of the rank
+</div>
+<p>The top D-scorer of the 2017-2020 period is <a href="https://www.instagram.com/verniaiev13/">Oleg Verniaiev</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20rank-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20rank-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20rank-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20rank.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    All-around E score as a function of the rank
+</div>
+<p>The top E-scorer of the 2017-2020 period is <a href="https://www.instagram.com/tang_chiahung1996/">Tang Chia Hung</a>.</p>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-14 mt-0 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20total%20D%20score-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20total%20D%20score-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20total%20D%20score-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/posts/2023-4-23-mag-scores-podium/all_around/Total%20E%20score%20as%20a%20function%20of%20the%20total%20D%20score.png" width="auto" height="auto" title="Result of athletes as a function of bodyweight" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+<div class="caption">
+    All-around E score as a function of the D score
+</div>
+
+<hr />
+
+<p>We hope to investigate more of those data in the future and help the gymnastics community!
+<strong>Gamba to all gymnasts!</strong></p>
+
+<p><i class="fas fa-door-open" style="font-size: 1.5em; background-color: transparent;"></i> With that, we will close this post. Thank you very much for reading up to this point! If you have any remark or question, feel free to reach me, my door is always open!</p>]]></content><author><name>Fabien Pesquerel</name></author><category term="gymnastics" /><category term="gymnastics" /><category term="data-analysis" /><summary type="html"><![CDATA[Statistical analysis of the apparatus finals and all-around final]]></summary></entry><entry><title type="html">Ranking athletes across weight classes</title><link href="http://localhost:4000/blog/2023/king-weighted-calisthenics2/" rel="alternate" type="text/html" title="Ranking athletes across weight classes" /><published>2023-01-11T00:00:00+01:00</published><updated>2023-01-11T00:00:00+01:00</updated><id>http://localhost:4000/blog/2023/king-weighted-calisthenics2</id><content type="html" xml:base="http://localhost:4000/blog/2023/king-weighted-calisthenics2/"><![CDATA[<h2>Overall, who is the strongest?</h2>
 
 <p><strong>In this post, we wonder how to compare performances of athletes across weight classes.</strong></p>
 
